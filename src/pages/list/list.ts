@@ -19,14 +19,12 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
    if(navParams.get("name")  && navParams.get("pass")) {
-    debugger;
      this.names =  navParams.get("name");
      this.password = navParams.get("pass");
    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListPage');
   }
 
 }
