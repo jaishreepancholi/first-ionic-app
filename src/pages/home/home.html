@@ -1,17 +1,48 @@
-<form [formGroup]="heroForm" (submit) = "onsubmit(heroForm.value)">
-<ion-list>
+<button
+    *ngIf="!showForm"
+    ion-button
+    color="primary"
+    (click)="addUser()">
+    ADD USER
+</button>
+<ion-grid>
+    <ion-row *ngFor="let data of dataArray; let i = index">
+		<ion-col col-3>{{data.username}}</ion-col>
+		<ion-col col-3>{{data.password}}</ion-col>
+		<ion-col col-1 ><ion-icon (click) = "removeUser(i)" name="close"></ion-icon></ion-col>
+		<ion-col col-1 (click) = "updateUser(data, i)">edit</ion-col>
+		
+    </ion-row>
+   
+</ion-grid>
 
-  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input type="text" formControlName = "username"></ion-input>
-  </ion-item>
+<div *ngIf="showForm">
+    <form
+        [formGroup]="heroForm"
+        (submit)="onsubmit(heroForm.value);heroForm.reset()">
+        <ion-list>
 
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password" formControlName = "password"></ion-input>
-  </ion-item>
+            <ion-item>
+                <ion-label floating>Username</ion-label>
+                <ion-input
+                    type="text"
+                    formControlName="username"></ion-input>
+            </ion-item>
 
-</ion-list>
-<button ion-button color="primary" full >login</button>
+            <ion-item>
+                <ion-label floating>Password</ion-label>
+                <ion-input
+                    type="password"
+                    formControlName="password"></ion-input>
+            </ion-item>
 
-</form>
+        </ion-list>
+        <button
+            ion-button
+            color="primary"
+            full>
+            ADD
+        </button>
+
+    </form>
+</div>

@@ -10,8 +10,13 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class HomePage {
   heroForm: FormGroup;
-
-  constructor(public navCtrl: NavController, public fb : FormBuilder) {
+  showForm: boolean = false;
+  dataArray: Array<any> = [];
+  dataObject: object = {
+    "username": '',
+    "password": ''
+  }
+  constructor(public navCtrl: NavController, public fb: FormBuilder) {
     this.createForm();
   }
 
@@ -21,11 +26,34 @@ export class HomePage {
       password: ''
     });
   }
-  
-  
-  
+
+
+
   onsubmit(value) {
-    this.navCtrl.push(ListPage, {name: value.username, pass: value.password});
+ 
+    this.dataObject = {
+      "username": value.username,
+      "password": value.password
+    }
+    this.dataArray.push(this.dataObject);
+    
+    this.showForm = false;
+
+    // this.navCtrl.push(ListPage, { name: value.username, pass: value.password });
+  }
+  addUser() {
+    this.showForm = true;
+  }
+  removeUser(index) {
+   this.dataArray.splice(index, 1);
+
+  }
+  updateUser(data, index){
+    debugger;
+    this.showForm = true;
+    // this.heroForm.get('username').setValue(data.username);
+    // this.heroForm.get('password').setValue(data.password);
+    
   }
 
 }
