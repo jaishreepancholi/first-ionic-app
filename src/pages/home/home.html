@@ -10,8 +10,7 @@
 		<ion-col col-3>{{data.username}}</ion-col>
 		<ion-col col-3>{{data.password}}</ion-col>
 		<ion-col col-1 ><ion-icon (click) = "removeUser(i)" name="close"></ion-icon></ion-col>
-		<ion-col col-1 (click) = "updateUser(data, i)">edit</ion-col>
-		
+ 		
     </ion-row>
    
 </ion-grid>
@@ -21,7 +20,6 @@
         [formGroup]="heroForm"
         (submit)="onsubmit(heroForm.value);heroForm.reset()">
         <ion-list>
-
             <ion-item>
                 <ion-label floating>Username</ion-label>
                 <ion-input

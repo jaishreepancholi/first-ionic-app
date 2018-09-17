@@ -48,12 +48,12 @@ export class HomePage {
    this.dataArray.splice(index, 1);
 
   }
-  updateUser(data, index){
-    debugger;
-    this.showForm = true;
-    // this.heroForm.get('username').setValue(data.username);
-    // this.heroForm.get('password').setValue(data.password);
+  // updateUser(data, index){
+  //   debugger;
+  //   this.showForm = true;
+  //   // this.heroForm.get('username').setValue(data.username);
+  //   // this.heroForm.get('password').setValue(data.password);
     
-  }
+  // }
 
 }
