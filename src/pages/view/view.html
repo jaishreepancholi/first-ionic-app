@@ -1,0 +1,27 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>view</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-card *ngIf="cakeName">
+        <ion-item>
+            <ion-avatar item-start>
+                <img [src]="viewItem.img">
+            </ion-avatar>
+            <h2>{{cakeName}}</h2>
+            <p>November 5, 1955</p>
+        </ion-item>
+
+        <img [src]="viewItem.img">
+
+        <ion-card-content>
+            <p>
+                Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.
+            </p>
+        </ion-card-content>
+
+    </ion-card>
+
+</ion-content>

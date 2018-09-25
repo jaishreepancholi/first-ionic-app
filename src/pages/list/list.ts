@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
 import { HomePage } from '../home/home';
-
+import { RestProvider } from '../../providers/rest/rest'
+import { ViewPage } from '../view/view';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,18 +14,31 @@ export class ListPage {
   password: any;
   dataObject: any;
   retrievedObject: any;
+  returnData: any;
+  idemp: any;
   loginDetailArray: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-   if(navParams.get("name")  && navParams.get("pass")) {
-     this.names =  navParams.get("name");
-     this.password = navParams.get("pass");
-   }
-  
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public rest: RestProvider) {
+
   }
   ionViewDidLoad() {
+    if (this.navParams.get("name") && this.navParams.get("pass")) {
+      this.names = this.navParams.get("name");
+      this.password = this.navParams.get("pass");
+
+    }
+    this.productList();
   }
   redirect() {
-  this.navCtrl.push(HomePage);
+    // this.navCtrl.push(HomePage);
+  }
+  productList() {
+    this.idemp = this.rest.getProduct().subscribe(productsData => {
+      this.returnData = productsData;
+    });
+  }
+  items(item: string) {
+    this.navCtrl.push(ViewPage, { viewItems: item });
   }
 }
